@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyToDoList"
+             x:Class="MyToDoList.MainPage">
+
+    <StackLayout>
+        <ListView x:Name="MyListView"
+              SeparatorColor="LightGray"
+              HasUnevenRows="True"
+              IsPullToRefreshEnabled="True"
+              Refreshing="MyListView_Refreshing"
+              ItemSelected="MyListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!--<ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="5">
+                            <Label Text="{Binding toDoId}" VerticalTextAlignment="Start" TextColor="Black"/>
+                            <Label Text="{Binding toDoTitle}" VerticalTextAlignment="Start" TextColor="Gray"/>
+                            <Label Text="{Binding toDoStatus}" />
+                        </StackLayout>
+                    </ViewCell>-->
+                    <TextCell Text="{Binding toDoTitle}" Detail="{Binding toDoStatus}">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Delete" Clicked="MenuItem_Clicked" IsDestructive="True" CommandParameter="{Binding .}"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
